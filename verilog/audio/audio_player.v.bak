@@ -1,0 +1,33 @@
+module audio_player( //system that plays sequentially in our memory
+	input clk,
+	input rst,
+	output [19:0]note
+);
+
+
+wire en;
+
+wire [4:0]send_addr;
+
+audio_time timer(
+	.clk(clk),
+	.rst(rst),
+	.t(en)
+);
+
+
+audio_counter count(
+	.clk(clk),
+	.rst(rst),
+	.t(en),
+	.addr(send_addr)
+);
+
+
+music_rom_5x20 song(
+	.addr(send_addr),
+	.clk(clk),
+	.dout(note)
+);
+
+endmodule

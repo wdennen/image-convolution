@@ -1,0 +1,29 @@
+`timescale 1ns/1ns
+module system_tb();
+	
+	reg clk;
+	reg rst;
+	reg key_pressed;
+	reg key_flag;
+	
+	wire [2:0] pix_val;
+	
+	system uut(
+		.clk(clk),
+		.rst(rst),
+		.key_pressed(key_pressed),
+		.key_flag(key_flag),
+		.pix_val(pix_val)
+	);
+	
+	always #5 clk = ~clk;
+	
+	initial begin
+		clk = 0; rst = 1;
+		#10 rst = 0;
+		key_pressed = 8'h16; key_flag = 1;
+		while(uut.processsor.controller.state != HOLD)
+			#10
+	
+	end
+	

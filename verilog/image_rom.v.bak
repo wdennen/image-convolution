@@ -1,0 +1,64 @@
+module rom1(
+	input [7:0] x,
+	input [6:0] y,
+	output reg [2:0] dout
+);
+
+wire [14:0] addr;
+assign addr = 160*y + x;
+
+always @(*)
+	case (addr)
+		2: dout = 3'b001;
+		319: dout = 3'b101;
+		318: dout = 3'b011;
+		320: dout = 3'b111;
+		default : dout = 3'b000;
+	endcase
+	
+endmodule
+
+module rom2(
+	input [7:0] x,
+	input [6:0] y,
+	output reg [2:0] dout
+);
+
+wire [14:0] addr;
+assign addr = 160*y + x;
+
+always @(*)
+	case (addr)
+		2: dout = 3'b001;
+		319: dout = 3'b101;
+		318: dout = 3'b011;
+		320: dout = 3'b111;
+		default : dout = 3'b000;
+	endcase
+	
+endmodule
+
+module rom3(
+	input [7:0] x,
+	input [6:0] y,
+	output reg [2:0] dout
+);
+
+wire [14:0] addr;
+assign addr = 160*y + x;
+
+always @(*)
+	case (addr)
+		2: dout = 3'b001;
+		319: dout = 3'b101;
+		318: dout = 3'b011;
+		320: dout = 3'b111;
+		default : dout = 3'b000;
+	endcase
+	
+endmodule
+
+
+
+
+

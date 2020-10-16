@@ -1,0 +1,37 @@
+module system(
+	input clk,
+	input rst,
+	input key_pressed,
+	input key_flag,
+	output [2:0] pix_val
+);
+
+	//outputs from processor to RAM
+	wire [7:0] im_x_addr;
+	wire [6:0] im_y_addr;
+	wire [2:0] s_im;
+	
+	wire [2:0] rom_din;
+
+	
+	//logic for setting rom_din based on s_im:
+	
+	
+	
+	
+	processor processor(
+		.clk(clk),
+		.rst(rst),
+		.key_pressed(key_pressed),
+		.key_flag(key_flag),
+		.im_din(rom_din),
+		.im_x_addr(im_x_addr),
+		.im_y_addr(im_y_addr),
+		.s_im(s_im),
+		.pix_val(pix_val)
+	);
+	
+	
+endmodule
+
+

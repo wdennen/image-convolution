@@ -1,0 +1,46 @@
+module music_rom_5x20(
+	input		  [4:0]  addr,
+	input			   	 clk,
+	output reg [19:0] dout
+);
+
+	reg [19:0] memarray [30:0];
+		
+	initial begin //(50,000,000/x)/2
+		memarray[0]  = 20'd37_921;
+		memarray[1]  = 20'd37_921;
+		memarray[2] = 20'd37_921;
+		memarray[3] = 20'd47_778;
+		memarray[4] = 20'd37_921;
+		memarray[5] = 20'd31_888;
+		memarray[6] = 20'd31_888;
+		memarray[7] = 20'd63_775;
+		memarray[8] = 20'd63_775;
+		memarray[9] = 20'd47_778;
+		memarray[10] = 20'd63_775;
+		memarray[11] = 20'd75_842;
+		memarray[12] = 20'd75_842;
+		memarray[13] = 20'd56_818;
+		memarray[14] = 20'd53_629;
+		memarray[15] = 20'd56_818;
+		memarray[16] = 20'd56_818;
+		memarray[17] = 20'd63_775;
+		memarray[18] = 20'd37_921;
+		memarray[19] = 20'd31_888;
+		memarray[20] = 20'd28_409;
+		memarray[21] = 20'd28_409;
+		memarray[22] = 20'd35_793;
+		memarray[23] = 20'd35_793;
+		memarray[24] = 20'd31_888;
+		memarray[25] = 20'd37_921;
+		memarray[26] = 20'd47_778;
+		memarray[27] = 20'd42_565;
+		memarray[28] = 20'd50_607;
+		memarray[29] = 20'd50_607;
+		memarray[30] = 20'd50_607;
+	end
+
+	always @(posedge clk)
+		dout <= memarray[addr];
+
+endmodule

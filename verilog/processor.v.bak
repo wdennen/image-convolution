@@ -1,0 +1,50 @@
+module processor(
+	input clk,
+	input rst,
+	input key_pressed,
+	input key_flag,
+	input  [2:0] im_din,
+	output [7:0] im_x_addr,
+	output [6:0] im_y_addr,
+	output [2:0] s_im,
+	output [2:0] pix_val
+);
+	
+	wire en_im_addr;
+	wire s_im_addr;
+	wire en_im;
+	wire s_disp;
+	wire en_disp;
+	wire im_final_addr;
+	
+	controller controller(
+		.clk(clk),
+		.rst(rst),
+		.im_final_addr(im_final_addr),
+		.key_pressed(key_pressed),
+		.key_flag(key_flag),
+		.en_im_addr(en_im_addr),
+		.s_im_addr(s_im_addr),
+		.en_im(en_im),
+		.s_im(s_im),
+		.s_disp(s_disp),
+		.en_disp(en_disp)
+	);
+	
+	datapath datapath(
+		.clk(clk),
+		.rst(rst),
+		.im_din(im_din),
+		.en_im_addr(en_im_addr),
+		.s_im_addr(s_im_addr),
+		.en_im(en_im),
+		.s_im(s_im),
+		.s_disp(s_disp),
+		.en_disp(en_disp),
+		.im_final_addr(im_final_addr),
+		.im_x_addr(im_x_addr),
+		.im_y_addr(im_y_addr),
+		.pix_val(pix_val)
+	);
+	
+endmodule
