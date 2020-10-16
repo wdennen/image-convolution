@@ -1,4 +1,4 @@
-#Image Convolution
+Image Convolution
 
 Image convolution written in Verilog, a hardware description language
 
